@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 function SignUp() {
@@ -62,7 +63,20 @@ function SignUp() {
                     }}>인증</button>
                 </div>
                 <div>
-                    <button type="submit" className="signup-button" disabled={disabled} style={{ opacity: opacity }}>회원가입</button>
+                    <button type="submit" className="signup-button" disabled={disabled} style={{ opacity: opacity }} onClick={() => {
+                        axios.post('https://pre-onboarding-selection-task.shop/auth/signup', {
+                            email: userEmail,
+                            password: userPassword,
+                        }, {
+                            headers: {
+                                "Content-Type": `application/json`,
+                            },
+                        }).then(function (response) {
+                            console.log(response);
+                        }).catch(function (error) {
+                            console.error(error);
+                        })
+                    }}>회원가입</button>
                 </div>
             </div>
         </>
