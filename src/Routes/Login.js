@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Login() {
 
@@ -30,6 +30,15 @@ function Login() {
         }
     }
 
+    const buttonHandler = () => {
+        isValidEmail && isValidPassword ? setOpacity(1) : setOpacity(0.5);
+        isValidEmail && isValidPassword ? setDisabled(false) : setDisabled(true);
+    }
+
+    useEffect(() => {
+        buttonHandler();
+    })
+
     return (
         <>
             <div>로그인</div>
@@ -37,6 +46,7 @@ function Login() {
                 <div>
                     <input type="email" className="login-input-email" placeholder="이메일을 입력해주세요" value={userEmail} onChange={(event) => {
                         setUserEmail(handleInput(event));
+                        buttonHandler();
                     }}></input>
                     <button onClick={() => {
                         emailErrorHandler();
@@ -45,13 +55,14 @@ function Login() {
                 <div>
                     <input type="password" className="login-input-pw" placeholder="비밀번호를 입력해주세요" value={userPassword} onChange={(event) => {
                         setUserPassword(handleInput(event));
+                        buttonHandler();
                     }}></input>
                     <button onClick={() => {
                         pwErrorHandler();
                     }}>인증</button>
                 </div>
                 <div>
-                    <button type="submit" className="login-button">제출</button>
+                    <button type="submit" className="login-button" disabled={disabled} style={{ opacity: opacity }}>제출</button>
                 </div>
             </div>
         </>
