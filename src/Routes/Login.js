@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function SignUp() {
+function Login() {
 
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
@@ -20,57 +20,38 @@ function SignUp() {
         return event.target.value;
     }
 
-    const emailErrorHandler = () => {
-        if (!isValidEmail) {
-            alert('이메일 형식이 올바르지 않습니다.');
-        }
-    }
-
-    const pwErrorHandler = () => {
-        if (!isValidPassword) {
-            alert('비밀번호 형식이 올바르지 않습니다. 8자 이상 입력해주세요.');
-        }
-    }
-
     const buttonHandler = () => {
         isValidEmail && isValidPassword ? setOpacity(1) : setOpacity(0.5);
         isValidEmail && isValidPassword ? setDisabled(false) : setDisabled(true);
     }
 
-    const navigate = useNavigate();
-    const goToLogin = () => {
-        navigate('/login');
-    }
+    // const navigate = useNavigate();
+    // const goToLogin = () => {
+    //     navigate('/login');
+    // }
 
     useEffect(() => {
         buttonHandler();
     })
 
-
     return (
         <>
-            <div>회원가입</div>
-            <div className="signup-bg">
+            <div>로그인</div>
+            <div className="login-bg">
                 <div>
-                    <input type="email" className="signup-input-email" placeholder="이메일을 입력해주세요" value={userEmail} onChange={(event) => {
+                    <input type="email" className="login-input-email" placeholder="이메일을 입력해주세요" value={userEmail} onChange={(event) => {
                         setUserEmail(handleInput(event));
                         buttonHandler();
                     }}></input>
-                    <button onClick={() => {
-                        emailErrorHandler();
-                    }}>인증</button>
                 </div>
                 <div>
-                    <input type="password" className="signup-input-pw" placeholder="비밀번호를 입력해주세요" value={userPassword} onChange={(event) => {
+                    <input type="password" className="login-input-pw" placeholder="비밀번호를 입력해주세요" value={userPassword} onChange={(event) => {
                         setUserPassword(handleInput(event));
                         buttonHandler();
                     }}></input>
-                    <button onClick={() => {
-                        pwErrorHandler();
-                    }}>인증</button>
                 </div>
                 <div>
-                    <button type="submit" className="signup-button" disabled={disabled} style={{ opacity: opacity }} onClick={() => {
+                    <button type="submit" className="login-button" disabled={disabled} style={{ opacity: opacity }} onClick={() => {
                         axios.post('https://pre-onboarding-selection-task.shop/auth/signup', {
                             email: userEmail,
                             password: userPassword,
@@ -80,15 +61,15 @@ function SignUp() {
                             },
                         }).then(function (response) {
                             console.log(response);
-                            goToLogin();
+                            // goToLogin();
                         }).catch(function (error) {
                             console.error(error);
                         })
-                    }}>회원가입</button>
+                    }}>로그인</button>
                 </div>
             </div>
         </>
     )
 }
 
-export default SignUp;
+export default Login;
