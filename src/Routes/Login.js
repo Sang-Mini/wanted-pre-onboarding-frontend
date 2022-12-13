@@ -30,14 +30,30 @@ function Login() {
         localStorage.setItem('access_token', response);
     }
 
-    // const navigate = useNavigate();
-    // const goToLogin = () => {
-    //     navigate('/login');
-    // }
+    // 로컬스토리지에 JWT가 존재하는지 확인하는 함수
+    const getLocalStorageJWT = () => {
+        let jwt = localStorage.getItem('access_token');
+        if (jwt) {
+            console.log("true");
+            return true;
+        }
+        return false;
+    }
+
+    const navigate = useNavigate();
+    const goToTodo = () => {
+        navigate('/todo');
+    }
 
     useEffect(() => {
         buttonHandler();
     })
+
+    useEffect(() => {
+        if (getLocalStorageJWT()) {
+            goToTodo();
+        }
+    }, [])
 
     return (
         <>
@@ -67,6 +83,8 @@ function Login() {
                         }).then(function (response) {
                             console.log(response);
                             setAccessTokenToLS(response.data.access_token);
+                            getLocalStorageJWT();
+                            goToTodo();
                         }).catch(function (error) {
                             console.error(error);
                         })
