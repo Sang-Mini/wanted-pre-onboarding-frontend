@@ -1,0 +1,42 @@
+.login-bg {
+    background: #ffffff;
+    box-sizing: border-box;
+    width: 400px;
+    height: 300px;
+    border: 1px solid #000000;
+    border-radius: 50px;
+    margin: 0 auto;
+}
+
+.login-input-email {
+    box-sizing: border-box;
+    width: 300px;
+    height: 40px;
+
+    border: 1px solid #494949;
+    border-radius: 8px;
+
+    margin-top: 10%;
+    padding-left: 10px;
+}
+
+.login-input-pw {
+    box-sizing: border-box;
+    width: 300px;
+    height: 40px;
+
+    border: 1px solid #494949;
+    border-radius: 8px;
+
+    margin-top: 20px;
+    padding-left: 10px;
+}
+
+.login-button {
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 8px;
+    width: 300px;
+    height: 40px;
+    margin-top: 15%;
+}
