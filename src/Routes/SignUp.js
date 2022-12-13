@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Login() {
+function SignUp() {
 
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
@@ -41,10 +41,10 @@ function Login() {
 
     return (
         <>
-            <div>로그인</div>
-            <div className="login-bg">
+            <div>회원가입</div>
+            <div className="signup-bg">
                 <div>
-                    <input type="email" className="login-input-email" placeholder="이메일을 입력해주세요" value={userEmail} onChange={(event) => {
+                    <input type="email" className="signup-input-email" placeholder="이메일을 입력해주세요" value={userEmail} onChange={(event) => {
                         setUserEmail(handleInput(event));
                         buttonHandler();
                     }}></input>
@@ -53,7 +53,7 @@ function Login() {
                     }}>인증</button>
                 </div>
                 <div>
-                    <input type="password" className="login-input-pw" placeholder="비밀번호를 입력해주세요" value={userPassword} onChange={(event) => {
+                    <input type="password" className="signup-input-pw" placeholder="비밀번호를 입력해주세요" value={userPassword} onChange={(event) => {
                         setUserPassword(handleInput(event));
                         buttonHandler();
                     }}></input>
@@ -62,11 +62,11 @@ function Login() {
                     }}>인증</button>
                 </div>
                 <div>
-                    <button type="submit" className="login-button" disabled={disabled} style={{ opacity: opacity }}>제출</button>
+                    <button type="submit" className="signup-button" disabled={disabled} style={{ opacity: opacity }}>회원가입</button>
                 </div>
             </div>
         </>
     )
 }
 
-export default Login;
+export default SignUp;

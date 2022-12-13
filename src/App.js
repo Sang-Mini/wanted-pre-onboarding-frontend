@@ -1,11 +1,11 @@
 import './App.css';
-import Login from './Routes/Login';
-import './css/Login.css';
+import SignUp from './Routes/SignUp';
+import './css/SignUp.css';
 
 function App() {
   return (
     <div className="App">
-      <Login></Login>
+      <SignUp></SignUp>
     </div>
   );
 }

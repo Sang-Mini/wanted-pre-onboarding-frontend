@@ -1,4 +1,4 @@
-.login-bg {
+.signup-bg {
     background: #ffffff;
     box-sizing: border-box;
     width: 400px;
@@ -8,7 +8,7 @@
     margin: 0 auto;
 }
 
-.login-input-email {
+.signup-input-email {
     box-sizing: border-box;
     width: 300px;
     height: 40px;
@@ -20,7 +20,7 @@
     padding-left: 10px;
 }
 
-.login-input-pw {
+.signup-input-pw {
     box-sizing: border-box;
     width: 300px;
     height: 40px;
@@ -32,7 +32,7 @@
     padding-left: 10px;
 }
 
-.login-button {
+.signup-button {
     background-color: #000000;
     color: #ffffff;
     border-radius: 8px;
