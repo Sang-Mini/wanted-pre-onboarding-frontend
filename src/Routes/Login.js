@@ -16,13 +16,18 @@ function Login() {
     // 비밀번호 길이가 8자 이상인지?
     const isValidPassword = userPassword.length >= 8;
 
-    const handleInput = event => {
+    const handleInput = (event) => {
         return event.target.value;
     }
 
     const buttonHandler = () => {
         isValidEmail && isValidPassword ? setOpacity(1) : setOpacity(0.5);
         isValidEmail && isValidPassword ? setDisabled(false) : setDisabled(true);
+    }
+
+    // 로그인 성공시 JWT를 로컬스토리지에 저장하는 함수
+    const setAccessTokenToLS = (response) => {
+        localStorage.setItem('access_token', response);
     }
 
     // const navigate = useNavigate();
@@ -52,7 +57,7 @@ function Login() {
                 </div>
                 <div>
                     <button type="submit" className="login-button" disabled={disabled} style={{ opacity: opacity }} onClick={() => {
-                        axios.post('https://pre-onboarding-selection-task.shop/auth/signup', {
+                        axios.post('https://pre-onboarding-selection-task.shop/auth/signin', {
                             email: userEmail,
                             password: userPassword,
                         }, {
@@ -61,7 +66,7 @@ function Login() {
                             },
                         }).then(function (response) {
                             console.log(response);
-                            // goToLogin();
+                            setAccessTokenToLS(response.data.access_token);
                         }).catch(function (error) {
                             console.error(error);
                         })
