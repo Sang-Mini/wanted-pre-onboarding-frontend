@@ -48,6 +48,19 @@ function Todo() {
         })
     }
 
+    const deleteTodoList = (id) => {
+        const url = `https://pre-onboarding-selection-task.shop/todos/:${id}`;
+        axios.delete(url, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            },
+        }).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.error(error);
+        })
+    }
+
     const [todoList, setTodoList] = useState([]);
     const [newTodoList, setNewTodoList] = useState('');
 
@@ -55,11 +68,17 @@ function Todo() {
         <>
             <div>투두리스트</div>
             {
-                todoList.map(function (a) {
+                todoList.map(function (a, i) {
                     return (
                         <div className="list">
                             <h4 key={a}>{a.todo}</h4>
                             <p>완료여부 : {a.isCompleted ? <span>✅</span> : <span>❌</span>}</p>
+                            <span>
+                                <button onClick={() => {
+                                    deleteTodoList(a.id);
+                                    console.log(a.id);
+                                }}>삭제</button>
+                            </span>
                         </div>
                     )
                 })
