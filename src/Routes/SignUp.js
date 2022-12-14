@@ -23,12 +23,16 @@ function SignUp() {
     const emailErrorHandler = () => {
         if (!isValidEmail) {
             alert('이메일 형식이 올바르지 않습니다.');
+        } else {
+            alert('정상입니다.');
         }
     }
 
     const pwErrorHandler = () => {
         if (!isValidPassword) {
             alert('비밀번호 형식이 올바르지 않습니다. 8자 이상 입력해주세요.');
+        } else {
+            alert('정상입니다.');
         }
     }
 

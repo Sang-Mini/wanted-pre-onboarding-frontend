@@ -68,7 +68,7 @@ function Todo() {
         <>
             <div>투두리스트</div>
             {
-                todoList.map(function (a, i) {
+                todoList.map(function (a) {
                     return (
                         <div className="list">
                             <h4 key={a}>{a.todo}</h4>
@@ -88,7 +88,7 @@ function Todo() {
                 setNewTodoList(e.target.value);
             }} />
             <button onClick={() => {
-                setTodoListHandler();
+                // setTodoListHandler();
                 axios.post('https://pre-onboarding-selection-task.shop/todos', {
                     todo: newTodoList,
                 }, {
