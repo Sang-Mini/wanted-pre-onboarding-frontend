@@ -39,7 +39,7 @@ function SignUp() {
 
     const navigate = useNavigate();
     const goToLogin = () => {
-        navigate('/login');
+        navigate('/');
     }
 
     useEffect(() => {
